@@ -139,7 +139,11 @@ module.exports = function (opts) {
     }
 
     if (!updated || !socket.setMulticastInterface) return
-    socket.setMulticastInterface(opts.interface || defaultInterface())
+    try {
+      socket.setMulticastInterface(opts.interface || defaultInterface())
+    } catch (err) {
+      that.emit('warning', err)
+    }
   }
 
   return that
