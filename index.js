@@ -142,7 +142,7 @@ module.exports = function (opts) {
     try {
       socket.setMulticastInterface(opts.interface || defaultInterface())
     } catch (err) {
-      that.emit('warning', err)
+      that.emit('error', err)
     }
   }
 
